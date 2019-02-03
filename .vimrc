@@ -1,4 +1,4 @@
-" Plugin manager configuration
+    " Plugin manager configuration
 
     set nocompatible              " required
     filetype off                  " required
@@ -14,6 +14,11 @@
     Plugin 'scrooloose/nerdtree'
     Plugin 'flazz/vim-colorschemes'
     Plugin 'powerline/powerline'
+    Plugin 'vim-scripts/surround.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'tomtom/tcomment_vim'
+    Plugin 'lifepillar/vim-cheat40'
+    Plugin 'valloric/youcompleteme'
 
     " add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
     Plugin 'tmhedberg/SimpylFold'
@@ -44,14 +49,29 @@
     set ruler	
     set undolevels=1000
     set backspace=indent,eol,start
+    set fillchars+=vert:│
 
 " Shortcuts configuration
 
     " split navigations
     nnoremap <C-J> <C-W><C-J>
+    nnoremap <C-DOWN> <C-W><C-J>
     nnoremap <C-K> <C-W><C-K>
+    nnoremap <C-UP> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
+    nnoremap <C-RIGHT> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
+    nnoremap <C-LEFT> <C-W><C-H>
+    nnoremap <C-S-RIGHT> <C-W><S-L>
+    nnoremap <C-S-LEFT> <C-W><S-H>
+    nnoremap <C-S-DOWN> <C-W><S-J>
+    nnoremap <C-S-UP> <C-W><S-K>
+
+    " own macros
+    map <C-Q> gcc<Down>
+    map <C-D> <Esc><Esc>yyp<END>i
+    map <C-S> :wa<CR>
+    map <C-X> :wqa<CR>
 
 " Starup program configuration
 
@@ -65,3 +85,20 @@
     python3 from powerline.vim import setup as powerline_setup
     python3 powerline_setup()
     python3 del powerline_setup
+
+    " I want to highlight whole todo and fixme lines
+    augroup myTodo
+	autocmd!
+	autocmd Syntax * syntax match myTodo /\v\_.<(TODO|FIXME).*/hs=s+1 containedin=.*Comment
+    augroup END
+
+    highlight link myTodo Todo
+    hi Comment ctermfg=LightBlue
+
+    " Highlight background of active line
+
+    augroup BgHighlight
+	autocmd!
+	autocmd WinEnter * set cul
+	autocmd WinLeave * set nocul
+    augroup END
