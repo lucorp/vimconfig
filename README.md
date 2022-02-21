@@ -29,3 +29,5 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   )
 )
 ```
+
+After executing command that will install plug.vim, run vim itself and from editor run :PlugInstall command. All requirements will be installed automatically this way.
