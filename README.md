@@ -1,3 +1,5 @@
+My custom vim configuration.
+
 ### Installation
 
 [Download plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
