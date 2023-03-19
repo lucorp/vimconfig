@@ -1,4 +1,5 @@
-My custom vim configuration.
+Custom vim configuration. Not tested for long time, propably not working!!!
+
 
 ### Installation
 
