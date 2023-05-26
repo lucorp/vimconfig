@@ -33,3 +33,10 @@ nnoremap <C-S-Left> <C-W><C-H>
 nmap <ESC><ESC> :q!<CR>
 nmap <F2> :wq<CR>
 nnoremap <C-d> <ESC>yyp
+
+"Yanking for mac and linux
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
